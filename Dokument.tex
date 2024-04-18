@@ -1,0 +1,180 @@
+%------------------ vorlage.tex ------------------------------------------------
+%
+%
+%-------------------------------------------------------------------------------
+
+
+%------------------ Präambel ---------------------------------------------------
+\documentclass[envcountsame, envcountchap, deutsch]{i-studis}
+\usepackage{parskip} 
+\usepackage[utf8]{inputenc}
+\usepackage[xindy,style=indexgroup]{glossaries}
+
+\usepackage[a4paper]{geometry}
+\usepackage[english, ngerman]{babel}
+\usepackage{float}
+\usepackage{nameref}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{subcaption}
+
+\usepackage{listings}
+\usepackage{makecell}
+
+\usepackage[german, ruled, vlined]{algorithm2e}
+\usepackage{amssymb, amsfonts, amstext, amsmath}
+\usepackage{array}
+%\usepackage[skip=10pt]{caption}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{xcolor}
+%\usepackage{sectsty}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{blindtext}
+\usepackage[shortcuts]{extdash}
+% \usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{svg}
+
+% Zitierpakete
+\usepackage[style=apa,backend=biber, maxcitenames=2]{biblatex} %quotation style
+% \DeclareLanguageMapping{german}{english}
+\usepackage[pdftex, plainpages=false, breaklinks=true]{hyperref}
+\usepackage[babel, german=quotes]{csquotes}
+\addbibresource{Literatur.bib}
+
+\usepackage{makeidx}
+\usepackage{multicol}
+\setlength{\tabcolsep}{0.5em}                  % for horizontal padding in tables
+
+% Einstellungen für Code-Listings
+\lstset{
+        basicstyle=\ttfamily\scriptsize,       % print whole listing small and in monospace
+        keywordstyle=\color{blue}\bfseries,    % underlined bold black keywords
+        identifierstyle=,                      % nothing happens
+        commentstyle=\color{red},              % white comments
+        stringstyle=\ttfamily,                 % typewriter type for strings
+        showstringspaces=false,                % no special string spaces
+        framexleftmargin=7mm, 
+        tabsize=3,
+        showtabs=false,
+        frame=single, 
+        rulesepcolor=\color{blue},
+        numbers=left,
+        linewidth=146mm,
+        xleftmargin=8mm,
+        captionpos=b
+}
+
+\graphicspath{ {./Abbildungen/} }
+
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\makeindex
+
+\pagestyle{myheadings}
+\setlength{\textheight}{1.1\textheight}
+
+\makenoidxglossaries
+
+\newglossaryentry{Unique_Name}{
+    name={Unique Name},
+    description={description of glossary entry}
+}
+
+
+
+%------------------ Titelseite -------------------------------------------------
+\begin{document}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\title{} % Titel der Wissenschaftlichen Arbeit
+\project{Seminararbeit}
+% \degree{Bachelor of Science (B.Sc.)}                    % Nur bei Abschlussarbeit!
+\address{im Studiengang Wirtschaftsinformatik an der\\Hochschule Trier}
+
+\author{Niklas Metzen}
+\supervisorFirst{Prof.\ Dr.\ Maximilian Mustermann}
+\matrikelnummer{}
+\fachbereich{Wirtschaft}
+\studiengang{Wirtschaftsinformatik}
+\submitdate{\the\day.\the\month.\the\year}
+
+\mytitlepage{}
+
+%------------------ Vorwort, Kurzfassung, Verzeichnisse ------------------------
+\frontmatter
+\tableofcontents					% Inhaltsverzeichnis
+\listoffigures                        % Abbildungsverzeichnis
+\listoftables                           % Tabellenverzeichnis
+%------------------ Kapitel ----------------------------------------------------
+\mainmatter{}
+
+%------------------ Kapitel 1 -------------------------------------------------------------
+
+\chapter{Chapter} %name of chapter
+\section{Section} %name of section
+%\cite{} % citation unique name
+\subsection{Subsection} %name of subsection
+Unstructured list
+\begin{itemize} %unstructured list
+    \item %Object and description with
+\end{itemize}
+
+%------------------ Kapitel n -------------------------------------------------------------
+
+\vspace{1ex}
+Figure
+\begin{figure} %start of figure
+    \includegraphics[width=\textwidth]{comparison_variance_two_points.drawio.png} %source for picture
+    \caption{Eine erhöhte Varianz ist von Vorteil}\label{fig:var_max} % Caption of figure
+\end{figure}
+
+Reference of fiqure~\ref{fig:var_max}
+Reference of source~\cite{6065061}
+
+Center aligned text
+\begin{align} %center aligned text
+    \textnormal{Varianz Ratio}_{i} = \frac{var_{i}}{\sum _{i=1}^{n} {var_{i}}} % align 
+\end{align}
+
+Center aligned Table
+\begin{table} %pretty table
+    \centering
+    \begin{tabular}{lcccccl}
+        \toprule 
+        & \multicolumn{1}{c}{$k=3$} & \multicolumn{1}{c}{$k=7$}
+        \\\cmidrule(lr){2-2}\cmidrule(lr){3-3}
+        $Klasse$ & $Anzahl$ & $Anzahl$ \\
+        $A$    &   $2$     & $5$       \\
+        $B$ &   $1$     & $3$       \\\bottomrule
+    \end{tabular}
+    \caption{Auflistung der Klassen der $k$ nächsten Nachbarn für den unklassifizierten Datenpunkt in Abbildung}\label{tab:majority_rule}
+\end{table}
+
+Ordered list
+\begin{enumerate} %ordered list
+    \item One
+    \item Two
+\end{enumerate}
+
+Glossary
+$\gls{Unique_Name}$
+
+%------------------ Literaturverzeichnis & Index -------------------------------
+
+\backmatter{}
+\printbibliography{}
+\printindex
+\printnoidxglossaries										% Index (optional)
+%------------------ Anhänge ----------------------------------------------------
+
+\end{document}
